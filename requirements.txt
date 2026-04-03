@@ -1,0 +1,9 @@
+pandas
+numpy
+pdfplumber
+camelot-py[cv]
+openai
+tiktoken
+langchain
+matplotlib
+jupyter
