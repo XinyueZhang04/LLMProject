@@ -1,6 +1,5 @@
 # LLM Project (FAISS + Ollama)
 
----
 
 ## Project Overview
 
