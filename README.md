@@ -63,5 +63,4 @@ The system is functional but actively being improved toward production-level per
 ## Usage Instructions
 
 ### 1. Install dependencies
-```bash
 pip install numpy faiss-cpu sentence-transformers ollama camelot-py[cv] pandas
