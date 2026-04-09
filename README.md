@@ -3,7 +3,7 @@
 
 ## Project Overview
 
-This project implements a **local Retrieval-Augmented Generation (RAG) system** for querying structured information extracted from multiple PDF documents (e.g., aluminum alloy datasheets).
+This project implements a **local LLM Model Ollama** for querying structured information extracted from multiple PDF documents (e.g., aluminum alloy datasheets).
 
 The system extracts table data from PDFs, converts each row into semantic embeddings using a pretrained sentence transformer, and builds a FAISS vector index for fast similarity search. A local LLM (Ollama) is then used to generate natural language answers based on retrieved table context.
 
