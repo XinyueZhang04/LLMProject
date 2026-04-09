@@ -1,4 +1,4 @@
-# 📄 PDF Table QA System (RAG with FAISS + Ollama)
+# LLM Project (FAISS + Ollama)
 
 ---
 
