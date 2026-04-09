@@ -11,7 +11,6 @@ This project demonstrates a complete **end-to-end AI pipeline**:
 PDF parsing → data structuring → vector database → semantic retrieval → LLM-based question answering.
 
 
-
 ## File Description
 
 ### extract_tables.py
@@ -23,7 +22,6 @@ Preprocessing script for extracting table data from PDFs.
 - Saves processed data into `output/table_rows.pkl`  
 
 
-
 ### build_table_index.py
 Builds the vector database for semantic search.
 
@@ -31,7 +29,6 @@ Builds the vector database for semantic search.
 - Uses SentenceTransformer (`all-MiniLM-L6-v2`) to generate embeddings  
 - Builds FAISS index for fast similarity search  
 - Saves index as `output/table_index.faiss`  
-
 
 
 ### ask_table.py
@@ -45,17 +42,22 @@ Main interactive question-answering system.
 - Supports interactive CLI chat mode  
 
 
-
 ## Features
 
-- PDF table extraction and preprocessing  
-- Semantic embedding using SentenceTransformer  
-- Fast similarity search using FAISS  
-- Local LLM inference using Ollama (no API required)  
-- Retrieval-Augmented Generation (RAG) pipeline  
-- Fully offline and privacy-preserving system  
-- Interactive command-line question answering  
+- PDF table extraction and preprocessing (Camelot-based, basic version)
+- Semantic embedding using SentenceTransformer
+- Fast similarity search using FAISS vector index
+- Local LLM inference using Ollama (no API required)
+- Interactive command-line question answering system
 
+⚠️ Current Status:
+Table extraction accuracy and retrieval performance are still being optimized, including:
+- Better table parsing from complex PDFs
+- Improved embedding and retrieval quality
+- Enhanced prompt design for more accurate LLM responses
+- Support for structured table reconstruction
+
+The system is functional but actively being improved toward production-level performance.
 
 
 ## Usage Instructions
