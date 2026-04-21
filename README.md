@@ -29,7 +29,7 @@ The inference script for context retrieval and LLM response generation.
 - **Model Upgrade**: Upgraded from the original 1.5B model to `qwen2.5:7b`, significantly enhancing the understanding of table numerical logic.
 - **Strict Grounding**: Uses a prompt that mandates the model answer ONLY based on the provided `Table Data`; if no answer is found, it must respond with "I don't know."
 
-## Key Issues Solved
+## Key Issues Solved（Update!）
 
 1.  **Header-Row "Decoupling"**:
     In `extract_tables.py`, by forcibly combining each row with its headers, the system solves the issue where the AI finds a data row but cannot identify field meanings (e.g., distinguishing "Purity" from "Price").
