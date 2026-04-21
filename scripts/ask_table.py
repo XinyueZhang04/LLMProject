@@ -29,7 +29,7 @@ index = faiss.read_index(index_path)
 print("[INFO] FAISS index loaded.")
 
 # ========================
-# 加载 embedding 模型（必须和 build_index 一样）
+# embedding 模型（不变，保证和 index 一致）
 # ========================
 model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 
@@ -41,34 +41,38 @@ def retrieve_context(query, top_k=5):
     query_vec = np.array(query_vec, dtype="float32")
 
     distances, indices = index.search(query_vec, top_k)
-    context_rows = [table_rows[i] for i in indices[0]]
 
+    context_rows = [table_rows[i] for i in indices[0]]
     return context_rows
 
 # ========================
-# 问答函数（Ollama）
+# 问答函数（Ollama - FIX ONLY HERE）
 # ========================
 def ask_table(query):
     context_rows = retrieve_context(query)
 
-    context_text = "\n".join([str(row) for row in context_rows])
+    context_text = "\n".join([
+        r.get("text", str(r)) for r in context_rows
+    ])
 
     prompt = f"""
-You are a helpful assistant.
+You are a precise assistant.
 
-Answer ONLY using the table data below.
-If the answer is not in the data, say "I don't know".
+Rules:
+- Use ONLY the provided table data
+- If not found, say "I don't know"
+- Avoid guessing
 
 Table Data:
 {context_text}
 
 Question: {query}
 
-Answer clearly in bullet points.
+Answer:
 """
 
     response = ollama.chat(
-        model='qwen2:1.5b',   # 确保你已经 ollama pull 过这个模型
+        model='qwen2.5:7b',   # ⭐ FIX: 原来 qwen1.5b → 升级
         messages=[
             {"role": "user", "content": prompt}
         ]
